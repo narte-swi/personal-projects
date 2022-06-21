@@ -30,7 +30,11 @@ pipeline {
                 sh "mvn build"
             }
         }
-        
+        stage('Docker Build') {
+            steps {
+                sh "sudo docker build -t $JOB_NAME:BUILD_NUMBER ."
+            }
+        }
     }
     post {
         always{
